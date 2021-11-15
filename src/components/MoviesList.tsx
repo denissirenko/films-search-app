@@ -4,6 +4,8 @@ import { useActions } from '../hooks/useActions';
 
 import { MoviesListItem } from './MoviesListItem';
 
+import { Row, Col } from 'antd';
+
 export const MoviesList: FC = () => {
     const  { movies, error, loading } = useTypedSelector( state => state.movies);
     const { fetchMovies } = useActions();
@@ -19,7 +21,7 @@ export const MoviesList: FC = () => {
     }
 
     return (
-        <div>
+        <Row gutter={[16, 16]}>
             {movies?.map(movie =>
                 <MoviesListItem 
                     key={movie.id} 
@@ -29,6 +31,6 @@ export const MoviesList: FC = () => {
                     vote_average={movie.vote_average}
                 />
             )}
-        </div>
+        </Row>
     );
 }
