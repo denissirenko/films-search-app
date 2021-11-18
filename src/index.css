@@ -10,3 +10,16 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+.container {
+  margin: 0 auto;
+  max-width: 1230px;
+  padding: 0 15px;
+}
+
+.CardWrapper {
+  margin: -16px 0 0 -16px;
+}
+.CardItemHolder {
+  padding: 16px 0 0 16px;
+}

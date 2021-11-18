@@ -4,24 +4,29 @@ import { useActions } from '../hooks/useActions';
 
 import { MoviesListItem } from './MoviesListItem';
 
-import { Row, Col } from 'antd';
+import { Row, Spin, Space } from 'antd';
 
 export const MoviesList: FC = () => {
     const  { movies, error, loading } = useTypedSelector( state => state.movies);
+    const  { filters } = useTypedSelector( state => state.filters);
     const { fetchMovies } = useActions();
     useEffect(() => {
-        fetchMovies()
-    }, [])
+        fetchMovies(filters)
+    }, [filters])
 
     if (loading) {
-        return <h1>Идет загрузка...</h1>
+        return (
+            <Space size="middle">
+                <Spin size="large" />
+            </Space>
+        )
     }
     if (error) {
         return <h1>{error}</h1>
     }
 
     return (
-        <Row gutter={[16, 16]}>
+        <Row className='CardWrapper'>
             {movies?.map(movie =>
                 <MoviesListItem 
                     key={movie.id} 

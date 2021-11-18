@@ -12,8 +12,8 @@ interface IMovies {
 
 export const MoviesListItem = ({backdrop_path, poster_path, title, vote_average}: IMovies) => {
     return (
-        <Col span={6}>
-            <Card
+        <Col span={6} className="CardItemHolder">
+            <Card 
                 hoverable
                 cover={<img alt={title} src={`https://image.tmdb.org/t/p/w500${backdrop_path || poster_path}`} />}
             >
