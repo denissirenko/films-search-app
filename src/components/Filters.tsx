@@ -9,10 +9,11 @@ const { Option } = Select;
 export const Filters = () => {
     const  { filters } = useTypedSelector( state => state.filters);
     
-    const { fetchFilters } = useActions();
+    const { fetchFilters, fetchPage } = useActions();
 
     function handleChange(value:string) {
-        fetchFilters(value)
+        fetchFilters(value);
+        fetchPage(1);
     }
 
     return (

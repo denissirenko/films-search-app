@@ -7,6 +7,7 @@ export enum MoviesActionTypes {
     FETCH_MOVIES = 'FETCH_MOVIES',
     FETCH_MOVIES_SUCCESS = 'FETCH_MOVIES_SUCCESS',
     FETCH_MOVIES_ERROR = 'FETCH_MOVIES_ERROR',
+    FETCH_CURRENT_PAGE = 'FETCH_CURRENT_PAGE',
 }
 interface FetchMoviesAction {
     type: MoviesActionTypes.FETCH_MOVIES;
@@ -19,4 +20,8 @@ interface FetchMoviesErrorAction {
     type: MoviesActionTypes.FETCH_MOVIES_ERROR;
     payload: string;
 }
-export type MoviesAction = FetchMoviesAction | FetchMoviesSuccessAction | FetchMoviesErrorAction
+interface FetchCurrentPageAction {
+    type: MoviesActionTypes.FETCH_CURRENT_PAGE;
+    payload: number;
+}
+export type MoviesAction = FetchMoviesAction | FetchMoviesSuccessAction | FetchMoviesErrorAction | FetchCurrentPageAction

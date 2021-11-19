@@ -2,6 +2,8 @@ import React, { FC, useEffect } from 'react';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { useActions } from '../hooks/useActions';
 
+import { PaginationUI } from './Pagination';
+
 import { MoviesListItem } from './MoviesListItem';
 
 import { Row, Spin, Space } from 'antd';
@@ -9,10 +11,11 @@ import { Row, Spin, Space } from 'antd';
 export const MoviesList: FC = () => {
     const  { movies, error, loading } = useTypedSelector( state => state.movies);
     const  { filters } = useTypedSelector( state => state.filters);
+    const  { page } = useTypedSelector( state => state.page);
     const { fetchMovies } = useActions();
     useEffect(() => {
-        fetchMovies(filters)
-    }, [filters])
+        fetchMovies(filters, page)
+    }, [filters, page])
 
     if (loading) {
         return (
@@ -36,6 +39,7 @@ export const MoviesList: FC = () => {
                     vote_average={movie.vote_average}
                 />
             )}
+            <PaginationUI />
         </Row>
     );
 }
